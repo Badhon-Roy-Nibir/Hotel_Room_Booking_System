@@ -1,3 +1,4 @@
 <?php
-    echo "Hotel Room";
+    // echo "Hotel Room";
+    header("Location: ./View/Admin.LoginView.php");
 ?>
