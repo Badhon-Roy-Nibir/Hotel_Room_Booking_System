@@ -15,6 +15,11 @@ body{
 }
 
 /* Sidebar */
+.sidebar ul li a{
+    color: white;
+    text-decoration: none;
+    display: block;
+}
 
 .sidebar{
     width: 250px;

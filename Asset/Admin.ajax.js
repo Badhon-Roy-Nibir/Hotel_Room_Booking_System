@@ -19,7 +19,7 @@ function Login(event){
             var res = JSON.parse(xhr.responseText);
 
             if(res.status === "success"){
-                window.location.href = "../View/AdminDashboadView.php";
+                window.location.href = "../View/Admin.DashboardView.php";
             }else{
                 alert("Login failed");
             }
