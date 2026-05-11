@@ -7,7 +7,7 @@
 <head>
     <title>Login</title>
 
-    <link rel="stylesheet" href="../Asset/AdminLogin.style.css">
+    <link rel="stylesheet" href="../Asset/AdminLoginstyle.css">
 </head>
 <body>
 
