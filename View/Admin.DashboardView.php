@@ -16,6 +16,7 @@
             <ul>
                 <li>Dashboard</li>
                 <li><a href="RoomView.php">Rooms</a></li>
+                <li><a href="RoomTypesView.php">Room Types</a></li>
                 <li>Bookings</li>
                 <li>Guests</li>
                 <li>Revenue</li>

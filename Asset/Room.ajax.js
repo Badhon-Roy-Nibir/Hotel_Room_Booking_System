@@ -1,7 +1,4 @@
-
-// =========================
 // LOAD ALL ROOMS
-// =========================
 function loadRooms(){
 
     var xhr = new XMLHttpRequest();
@@ -53,10 +50,7 @@ function loadRooms(){
 }
 
 
-
-// =========================
 // ADD ROOM
-// =========================
 function addRoom(event){
 
     event.preventDefault();
@@ -105,10 +99,7 @@ function addRoom(event){
 }
 
 
-
-// =========================
 // DELETE ROOM
-// =========================
 function deleteRoom(id){
 
     var xhr = new XMLHttpRequest();
@@ -131,11 +122,7 @@ function deleteRoom(id){
     xhr.send();
 }
 
-
-
-// =========================
 // EDIT ROOM (LOAD DATA)
-// =========================
 function editRoom(id){
 
     var xhr = new XMLHttpRequest();

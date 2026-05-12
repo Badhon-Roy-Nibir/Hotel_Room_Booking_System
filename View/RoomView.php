@@ -16,9 +16,9 @@
     <div class="topbar">
         <h1>Room Management</h1>
 
-        <button class="add-btn" onclick="document.getElementById('roomForm').reset();">
+        <!-- <button class="add-btn" onclick="document.getElementById('roomForm').reset();">
             + Add New Room
-        </button>
+        </button> -->
     </div>
 
 
