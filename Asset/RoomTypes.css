@@ -1,0 +1,275 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background: #f4f7fb;
+    padding: 40px;
+    color: #333;
+}
+
+
+
+/* =========================
+   PAGE TITLE
+========================= */
+
+h1{
+    text-align: center;
+    margin-bottom: 30px;
+    color: #1e293b;
+    font-size: 36px;
+}
+
+
+
+/* =========================
+   FORM CONTAINER
+========================= */
+
+form{
+    max-width: 700px;
+    margin: auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.08);
+}
+
+
+
+/* =========================
+   LABELS
+========================= */
+
+label{
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #334155;
+}
+
+
+
+/* =========================
+   INPUTS
+========================= */
+
+input[type="text"],
+input[type="number"],
+select,
+textarea,
+input[type="file"]{
+
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s;
+    background: #fff;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+
+    border-color: #2563eb;
+    box-shadow: 0px 0px 5px rgba(37,99,235,0.3);
+}
+
+
+
+/* =========================
+   TEXTAREA
+========================= */
+
+textarea{
+    resize: vertical;
+}
+
+
+
+/* =========================
+   AMENITIES
+========================= */
+
+.amenities-list{
+
+    margin-top: 20px;
+    padding: 15px;
+    background: #f8fafc;
+    border-radius: 10px;
+    border: 1px solid #dbeafe;
+}
+
+.amenities-list label{
+
+    display: inline-block;
+    margin-right: 20px;
+    margin-top: 10px;
+    font-weight: normal;
+}
+
+.amenities-list input[type="checkbox"]{
+
+    margin-right: 6px;
+}
+
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+input[type="submit"],
+input[type="reset"]{
+
+    margin-top: 25px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+input[type="submit"]{
+
+    background: #2563eb;
+    color: white;
+    margin-right: 10px;
+}
+
+input[type="submit"]:hover{
+
+    background: #1d4ed8;
+}
+
+input[type="reset"]{
+
+    background: #e2e8f0;
+    color: #334155;
+}
+
+input[type="reset"]:hover{
+
+    background: #cbd5e1;
+}
+
+
+
+/* =========================
+   TABLE
+========================= */
+
+table{
+
+    width: 100%;
+    margin-top: 40px;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.08);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+thead{
+
+    background: #2563eb;
+    color: white;
+}
+
+th,
+td{
+
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+tr:hover{
+
+    background: #f8fafc;
+}
+
+
+
+/* =========================
+   IMAGE
+========================= */
+
+td img{
+
+    border-radius: 8px;
+    object-fit: cover;
+    border: 1px solid #cbd5e1;
+}
+
+
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
+td button{
+
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 2px;
+    transition: 0.3s;
+}
+
+td button:first-child{
+
+    background: #0ea5e9;
+    color: white;
+}
+
+td button:first-child:hover{
+
+    background: #0284c7;
+}
+
+td button:last-child{
+
+    background: #ef4444;
+    color: white;
+}
+
+td button:last-child:hover{
+
+    background: #dc2626;
+}
+
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width: 768px){
+
+    body{
+        padding: 15px;
+    }
+
+    form{
+        padding: 20px;
+    }
+
+    table{
+        display: block;
+        overflow-x: auto;
+    }
+}
