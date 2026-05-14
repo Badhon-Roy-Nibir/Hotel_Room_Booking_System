@@ -62,24 +62,47 @@ class RoomTypeModel{
 
 
     // ADD ROOM TYPE    
-public function addRoomType($name, $description, $price, $capacity, $amenities, $thumbnail,$thumbnailType){
+public function addRoomType(
+    $name,
+    $description,
+    $price,
+    $capacity,
+    $amenities,
+    $thumbnail,
+    $thumbnailType
+){
 
     $sql = "
         INSERT INTO room_types
-        (name,description,price_per_night,max_capacity,amenities,thumbnail,thumbnail_type)
+        (
+            name,
+            description,
+            price_per_night,
+            max_capacity,
+            amenities,
+            thumbnail,
+            thumbnail_type
+        )
         VALUES
         (
-            '$name',
-            '$description',
-            '$price',
-            '$capacity',
-            '$amenities',
-            '$thumbnail',
-            '$thumbnailType'
+            ?, ?, ?, ?, ?, ?, ?
         )
     ";
 
-    return $this->conn->query($sql);
+    $stmt = $this->conn->prepare($sql);
+
+    $stmt->bind_param(
+        "ssdisss",
+        $name,
+        $description,
+        $price,
+        $capacity,
+        $amenities,
+        $thumbnail,
+        $thumbnailType
+    );
+
+    return $stmt->execute();
 }
 
     // UPDATE ROOM TYPE    
@@ -96,21 +119,32 @@ public function updateRoomType(
 
     $sql = "
         UPDATE room_types
-
         SET
-
-        name = '$name',
-        description = '$description',
-        price_per_night = '$price',
-        max_capacity = '$capacity',
-        amenities = '$amenities',
-        thumbnail = '$thumbnail',
-        thumbnail_type = '$thumbnailType'
-
-        WHERE id = '$id'
+            name = ?,
+            description = ?,
+            price_per_night = ?,
+            max_capacity = ?,
+            amenities = ?,
+            thumbnail = ?,
+            thumbnail_type = ?
+        WHERE id = ?
     ";
 
-    return $this->conn->query($sql);
+    $stmt = $this->conn->prepare($sql);
+
+    $stmt->bind_param(
+        "ssdisssi",
+        $name,
+        $description,
+        $price,
+        $capacity,
+        $amenities,
+        $thumbnail,
+        $thumbnailType,
+        $id
+    );
+
+    return $stmt->execute();
 }
     // DELETE ROOM TYPE
     public function deleteRoomType($id){

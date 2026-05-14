@@ -1,0 +1,156 @@
+/* ===============================
+   BODY
+================================= */
+
+body{
+    margin: 0;
+    padding: 30px;
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+}
+
+
+/* ===============================
+   HEADING
+================================= */
+
+h1{
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+
+/* ===============================
+   SEARCH SECTION
+================================= */
+
+div{
+    margin-bottom: 20px;
+}
+
+#searchInput{
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+
+/* ===============================
+   BUTTONS
+================================= */
+
+button{
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+button:hover{
+    background-color: #0056b3;
+}
+
+
+/* ===============================
+   TABLE
+================================= */
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
+}
+
+
+/* TABLE HEAD */
+
+thead{
+    background-color: #007bff;
+    color: white;
+}
+
+
+/* TABLE CELLS */
+
+th,
+td{
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+
+/* ROW HOVER */
+
+tbody tr:hover{
+    background-color: #f1f1f1;
+}
+
+
+/* PROFILE IMAGE */
+
+td img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+/* STATUS */
+
+.active{
+    color: green;
+    font-weight: bold;
+}
+
+.deactivated{
+    color: red;
+    font-weight: bold;
+}
+
+
+/* ACTION BUTTONS */
+
+.action-btn{
+    padding: 7px 12px;
+    font-size: 13px;
+}
+
+.deactivate-btn{
+    background-color: #dc3545;
+}
+
+.deactivate-btn:hover{
+    background-color: #a71d2a;
+}
+
+
+/* ===============================
+   RESPONSIVE
+================================= */
+
+@media screen and (max-width: 768px){
+
+    table{
+        font-size: 12px;
+    }
+
+    #searchInput{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    button{
+        width: 100%;
+        margin-top: 5px;
+    }
+}
