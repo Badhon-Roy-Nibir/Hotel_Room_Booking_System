@@ -14,15 +14,16 @@
             <h2>ROY HOTEL</h2>
 
             <ul>
-                <li>Dashboard</li>
                 <li><a href="RoomView.php">Rooms</a></li>
                 <li><a href="RoomTypesView.php">Room Types</a></li>
-                <li>Bookings</li>
-                <li>Guests</li>
-                <li>Revenue</li>
+                <li><a href="ReceptionistView.php">Receptionist</a></li>
+                <li><a href="SupervisorView.php">Housekeeping Supervisor</a></li>
+                <li><a href="GuestView.php">Guests</a></li>
+                <li><a href="BookingView.php">Booking</a></li>
+                <li><a href="ReportView.php">Financial Reports</a></li>
                 <li>Maintenance</li>
                 <li>Reviews</li>
-                <li>Logout</li>
+                <li><a href="Admin.LoginView.php">Logout</a></li>
             </ul>
         </div>
 

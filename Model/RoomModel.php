@@ -74,31 +74,52 @@ class RoomModel{
     // ADD ROOM
     public function addRoom($roomNumber, $roomTypeId, $floor, $status){
 
-        $sql = "
-            INSERT INTO rooms 
-            (room_number, room_type_id, floor, status)
-            VALUES 
-            ('$roomNumber','$roomTypeId','$floor','$status')
-        ";
+    $sql = "
+        INSERT INTO rooms 
+        (room_number, room_type_id, floor, status)
+        VALUES 
+        (?, ?, ?, ?)
+    ";
 
-        return $this->conn->query($sql);
-    }
+    $stmt = $this->conn->prepare($sql);
+
+    $stmt->bind_param(
+        "siss",
+        $roomNumber,
+        $roomTypeId,
+        $floor,
+        $status
+    );
+
+    return $stmt->execute();
+}
 
 
     // UPDATE ROOM
     public function updateRoom($id, $roomNumber, $roomTypeId, $floor, $status){
 
-        $sql = "
-            UPDATE rooms SET
-                room_number = '$roomNumber',
-                room_type_id = '$roomTypeId',
-                floor = '$floor',
-                status = '$status'
-            WHERE id = '$id'
-        ";
+    $sql = "
+        UPDATE rooms SET
+            room_number = ?,
+            room_type_id = ?,
+            floor = ?,
+            status = ?
+        WHERE id = ?
+    ";
 
-        return $this->conn->query($sql);
-    }
+    $stmt = $this->conn->prepare($sql);
+
+    $stmt->bind_param(
+        "sissi",
+        $roomNumber,
+        $roomTypeId,
+        $floor,
+        $status,
+        $id
+    );
+
+    return $stmt->execute();
+}
 
 
     // DELETE ROOM

@@ -1,0 +1,238 @@
+/* =========================
+   GLOBAL
+========================= */
+
+body{
+
+    margin: 0;
+
+    padding: 0;
+
+    font-family: Arial, sans-serif;
+
+    background-color: #f4f6f9;
+}
+
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+
+    width: 95%;
+
+    margin: 30px auto;
+}
+
+
+
+/* =========================
+   HEADING
+========================= */
+
+h1{
+
+    text-align: center;
+
+    color: #333;
+
+    margin-bottom: 30px;
+}
+
+
+
+/* =========================
+   FILTER SECTION
+========================= */
+
+.filter-section{
+
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 10px;
+
+    margin-bottom: 25px;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+
+
+/* FILTER GROUP */
+
+.filter-group,
+.date-group{
+
+    display: flex;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 20px;
+}
+
+
+
+/* FILTER ITEM */
+
+.filter-item{
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 200px;
+}
+
+
+
+/* LABEL */
+
+label{
+
+    margin-bottom: 8px;
+
+    font-weight: bold;
+
+    color: #444;
+}
+
+
+
+/* INPUTS */
+
+input,
+select{
+
+    padding: 10px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 5px;
+
+    font-size: 14px;
+}
+
+
+
+/* BUTTONS */
+
+.button-group{
+
+    display: flex;
+
+    gap: 15px;
+}
+
+
+
+button{
+
+    padding: 10px 20px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    background-color: #007bff;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 14px;
+}
+
+
+
+button:hover{
+
+    background-color: #0056b3;
+}
+
+
+
+/* =========================
+   TABLE
+========================= */
+
+.table-container{
+
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 10px;
+
+    overflow-x: auto;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+
+
+table{
+
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+
+
+/* TABLE HEADER */
+
+thead{
+
+    background-color: #007bff;
+
+    color: white;
+}
+
+
+
+/* TABLE CELLS */
+
+th,
+td{
+
+    padding: 12px;
+
+    text-align: center;
+
+    border: 1px solid #ddd;
+}
+
+
+
+/* ROW HOVER */
+
+tbody tr:hover{
+
+    background-color: #f1f1f1;
+}
+
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width: 768px){
+
+    .filter-group,
+    .date-group{
+
+        flex-direction: column;
+    }
+
+    .button-group{
+
+        flex-direction: column;
+    }
+}
