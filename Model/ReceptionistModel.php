@@ -100,29 +100,40 @@ class ReceptionistModel{
     // GET RECEPTIONIST BY ID
     public function getReceptionistById($id){
 
-        $sql = "
-            SELECT *
-            FROM users
-            WHERE id = '$id'
-            AND role = 'receptionist'
-        ";
+    $sql = "
+        SELECT *
+        FROM users
+        WHERE id = ?
+        AND role = 'receptionist'
+        LIMIT 1
+    ";
 
-        $result = $this->conn->query($sql);
+    $stmt = $this->conn->prepare($sql);
 
-        if($result && $result->num_rows > 0){
+    if(!$stmt){
+        die($this->conn->error);
+    }
 
-            $row = $result->fetch_assoc();
+    $stmt->bind_param("i", $id);
 
-            if(!empty($row["profile_pic"])){
+    $stmt->execute();
 
-                $row["profile_pic"] = base64_encode($row["profile_pic"]);
-            }
+    $result = $stmt->get_result();
 
-            return $row;
+    if($result && $result->num_rows > 0){
+
+        $row = $result->fetch_assoc();
+
+        if(!empty($row["profile_pic"])){
+
+            $row["profile_pic"] = base64_encode($row["profile_pic"]);
         }
 
-        return null;
+        return $row;
     }
+
+    return null;
+}
 
 
     // UPDATE RECEPTIONIST
@@ -182,15 +193,23 @@ class ReceptionistModel{
     // DEACTIVATE RECEPTIONIST
     public function deactivateReceptionist($id){
 
-        $sql = "
-            UPDATE users
-            SET is_active = 0
-            WHERE id = '$id'
-            AND role = 'receptionist'
-        ";
+    $sql = "
+        UPDATE users
+        SET is_active = 0
+        WHERE id = ?
+        AND role = 'receptionist'
+    ";
 
-        return $this->conn->query($sql);
+    $stmt = $this->conn->prepare($sql);
+
+    if(!$stmt){
+        die($this->conn->error);
     }
+
+    $stmt->bind_param("i", $id);
+
+    return $stmt->execute();
+}
 }
 
 ?>

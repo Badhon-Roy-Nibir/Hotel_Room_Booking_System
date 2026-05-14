@@ -6,7 +6,7 @@
 <head>
     <title>Housekeeping Supervisor Management</title>
 
-    <!-- <link rel="stylesheet" href="../Asset/Receptionist.css"> -->
+    <link rel="stylesheet" href="../Asset/Receptionist.css">
 </head>
 
 <body onload="loadSupervisors()">

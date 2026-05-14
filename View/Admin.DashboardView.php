@@ -23,7 +23,7 @@
                 <li><a href="ReportView.php">Financial Reports</a></li>
                 <li>Maintenance</li>
                 <li>Reviews</li>
-                <li>Logout</li>
+                <li><a href="Admin.LoginView.php">Logout</a></li>
             </ul>
         </div>
 

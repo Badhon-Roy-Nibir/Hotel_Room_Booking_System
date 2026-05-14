@@ -135,7 +135,7 @@ if($_SERVER["REQUEST_METHOD"] === "GET"){
 
 
     // GET ALL
-    if($action == "GetSupervisor"){
+    if($action == "GetSupervisors"){
 
         $data = $supervisorModel->getAllSupervisors();
 
@@ -149,7 +149,7 @@ if($_SERVER["REQUEST_METHOD"] === "GET"){
 
 
     // GET BY ID
-    if($action == "GetSuperisorById"){
+    if($action == "GetSupervisorById"){
 
         $id = $_GET["id"];
 

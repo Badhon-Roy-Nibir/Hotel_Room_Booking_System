@@ -3,7 +3,7 @@
 // ===============================
 function loadSupervisors(){
 
-    let xhr = new XMLHttpRequest();
+    var xhr = new XMLHttpRequest();
 
     xhr.open(
         "GET",
@@ -17,16 +17,16 @@ function loadSupervisors(){
 
             console.log(xhr.responseText);
 
-            let res = JSON.parse(xhr.responseText);
+            var res = JSON.parse(xhr.responseText);
 
-            let table = document.getElementById("supervisorTable");
+            var table = document.getElementById("supervisorTable");
 
             table.innerHTML = "";
 
 
             if(res.status === "success"){
 
-                let data = res.data;
+                var data = res.data;
 
 
                 if(data.length === 0){
@@ -45,13 +45,13 @@ function loadSupervisors(){
 
                 for(let i = 0; i < data.length; i++){
 
-                    let statusText =
+                    var statusText =
                         data[i].is_active == 1
                         ? "Active"
                         : "Deactivated";
 
 
-                    let imageSrc = "";
+                    var imageSrc = "";
 
                     if(data[i].profile_pic){
 
@@ -117,12 +117,12 @@ function saveSupervisor(event){
 
     event.preventDefault();
 
-    let id = document.getElementById("supervisorId").value;
+    var id = document.getElementById("supervisorId").value;
 
-    let formData = new FormData();
+    var formData = new FormData();
 
 
-    let action =
+    var action =
         id === ""
         ? "AddSupervisor"
         : "UpdateSupervisor";
@@ -168,7 +168,7 @@ function saveSupervisor(event){
     );
 
 
-    let file =
+    var file =
         document.getElementById("profilePic").files[0];
 
     if(file){
@@ -177,7 +177,7 @@ function saveSupervisor(event){
     }
 
 
-    let xhr = new XMLHttpRequest();
+    var xhr = new XMLHttpRequest();
 
     xhr.open(
         "POST",
@@ -192,7 +192,7 @@ function saveSupervisor(event){
 
             console.log(xhr.responseText);
 
-            let res = JSON.parse(xhr.responseText);
+            var res = JSON.parse(xhr.responseText);
 
             alert(res.message);
 
@@ -223,7 +223,7 @@ function saveSupervisor(event){
 // ===============================
 function editSupervisor(id){
 
-    let xhr = new XMLHttpRequest();
+    var xhr = new XMLHttpRequest();
 
     xhr.open(
         "GET",
@@ -238,7 +238,7 @@ function editSupervisor(id){
 
             console.log(xhr.responseText);
 
-            let res = JSON.parse(xhr.responseText);
+            var res = JSON.parse(xhr.responseText);
 
 
             if(res.status === "success"){
@@ -283,7 +283,7 @@ function editSupervisor(id){
 // ===============================
 function deactivateSupervisor(id){
 
-    let confirmDelete = confirm(
+    var confirmDelete = confirm(
         "Are you sure you want to deactivate this supervisor?"
     );
 
@@ -294,7 +294,7 @@ function deactivateSupervisor(id){
     }
 
 
-    let xhr = new XMLHttpRequest();
+    var xhr = new XMLHttpRequest();
 
     xhr.open(
         "GET",
