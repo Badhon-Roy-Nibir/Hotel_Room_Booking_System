@@ -1,6 +1,10 @@
 <?php
 
 session_start();
+if(!isset($_SESSION["email"])){
+    echo json_encode(["status" => "fail", "message" => "Unauthorized"]);
+    exit;
+}
 
 include_once("../Model/ReceptionistModel.php");
 

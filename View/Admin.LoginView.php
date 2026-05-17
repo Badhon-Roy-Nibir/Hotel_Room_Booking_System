@@ -23,16 +23,14 @@
             <label>Password:</label>
             <input type="password" placeholder="Enter your password" id="password">
 
-            <div class="register-link">
-                <a href="#">Not a User? Create an Account</a>
-            </div>
+
 
             <input type="submit" value="Login">
 
         </form>
 
     </div>
-    <script src="../Asset/Admin.ajax.js"></script>
+    <script src="../Asset/AdminAjax.js"></script>
 
 </body>
 </html>

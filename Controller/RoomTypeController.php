@@ -2,6 +2,10 @@
 <?php
 
     session_start();
+    if(!isset($_SESSION["email"])){
+    echo json_encode(["status" => "fail", "message" => "Unauthorized"]);
+    exit;
+}
 
     include_once("../Model/RoomTypeModel.php");
 
@@ -26,7 +30,7 @@
      
             $image = $_FILES["thumbnail"]["tmp_name"];
             $imageType = $_FILES["thumbnail"]["type"];
-            $imageData = addslashes(file_get_contents($image));
+            $imageData = file_get_contents($image);
 
 
 
@@ -83,9 +87,7 @@
 
                 $imageType = $_FILES["thumbnail"]["type"];
 
-                $imageData = addslashes(
-                    file_get_contents($image)
-                );
+                $imageData = file_get_contents($image);
     }
 
 

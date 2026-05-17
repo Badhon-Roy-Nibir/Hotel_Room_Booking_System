@@ -1,4 +1,3 @@
-
 // =========================
 // LOAD ROOM TYPES
 // =========================
@@ -6,7 +5,7 @@ function loadRoomTypes(){
 
     var xhr = new XMLHttpRequest();
 
-    xhr.open("GET", "../Controller/RoomTypeController.php?action=GetRoomTypes",true);
+    xhr.open("GET", "../Controller/RoomTypeController.php?action=GetRoomTypes", true);
 
     xhr.onreadystatechange = function(){
 
@@ -44,6 +43,7 @@ function loadRoomTypes(){
                                     src="data:${data[i].thumbnail_type};base64,${data[i].thumbnail}"
                                     width="80"
                                     height="60"
+                                    onerror="this.src='../Assets/no-image.png'"
                                 >
                             </td>
 
@@ -86,7 +86,16 @@ function saveRoomType(event){
     var price = document.getElementById("price").value;
     var capacity = document.getElementById("capacity").value;
 
-    var thumbnail = document.getElementById("thumbnail").files[0];
+    var thumbnailInput = document.getElementById("thumbnail");
+    var thumbnail = thumbnailInput.files[0];
+
+
+
+    // VALIDATE IMAGE ON ADD
+    if(id === "" && !thumbnail){
+        alert("Please select a thumbnail image.");
+        return;
+    }
 
 
 
@@ -116,14 +125,17 @@ function saveRoomType(event){
 
     formData.append("amenities", JSON.stringify(amenities));
 
-    formData.append("thumbnail", thumbnail);
+    // ONLY APPEND THUMBNAIL IF SELECTED
+    if(thumbnail){
+        formData.append("thumbnail", thumbnail);
+    }
 
 
 
     // AJAX
     var xhr = new XMLHttpRequest();
 
-    xhr.open("POST","../Controller/RoomTypeController.php",true);
+    xhr.open("POST", "../Controller/RoomTypeController.php", true);
 
     xhr.onreadystatechange = function(){
 
@@ -156,6 +168,10 @@ function saveRoomType(event){
 // =========================
 function deleteRoomType(id){
 
+    if(!confirm("Are you sure you want to delete this room type?")){
+        return;
+    }
+
     var xhr = new XMLHttpRequest();
 
     xhr.open(
@@ -186,7 +202,6 @@ function deleteRoomType(id){
 // =========================
 // EDIT ROOM TYPE
 // =========================
-
 function editRoomType(id){
 
     var xhr = new XMLHttpRequest();
@@ -220,9 +235,7 @@ function editRoomType(id){
 
 
                 // UNCHECK ALL
-                var checkboxes = document.querySelectorAll(
-                    'input[name="amenities[]"]'
-                );
+                var checkboxes = document.querySelectorAll('input[name="amenities[]"]');
 
                 checkboxes.forEach(function(box){
                     box.checked = false;
@@ -230,11 +243,15 @@ function editRoomType(id){
 
 
 
-                // SAFE JSON
+                // SAFE JSON PARSE
                 var amenities = [];
 
-                if(data.amenities){
-                    amenities = JSON.parse(data.amenities);
+                try {
+                    if(data.amenities){
+                        amenities = JSON.parse(data.amenities);
+                    }
+                } catch(e) {
+                    console.error("Failed to parse amenities:", e);
                 }
 
 
@@ -250,6 +267,21 @@ function editRoomType(id){
                         checkbox.checked = true;
                     }
                 });
+
+
+
+                // PREVIEW CURRENT IMAGE
+                var preview = document.getElementById("thumbnailPreview");
+
+                if(preview){
+                    preview.src = "data:" + data.thumbnail_type + ";base64," + data.thumbnail;
+                    preview.style.display = "block";
+                }
+
+
+
+                // SCROLL TO FORM
+                document.getElementById("roomTypeForm").scrollIntoView({ behavior: "smooth" });
             }
         }
     };
