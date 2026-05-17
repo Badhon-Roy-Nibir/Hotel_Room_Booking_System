@@ -1,5 +1,9 @@
 <?php
     session_start();
+    if(!isset($_SESSION["email"])){
+    echo json_encode(["status" => "fail", "message" => "Unauthorized"]);
+    exit;
+}
     include_once("../Model/RoomModel.php");
 
     header("Content-Type: application/json");
@@ -15,8 +19,8 @@
         if(isset($_POST["action"]) && $_POST["action"] == "AddRoom"){
 
             $roomNumber  = $_POST["roomNumber"];
-            $roomTypeId  = $_POST["roomTypeId"];
-            $floor       = $_POST["floor"];
+            $roomTypeId  = (int)$_POST["roomTypeId"];
+            $floor       = (int)$_POST["floor"];
             $status      = $_POST["status"];
 
             $result = $RoomModel->addRoom(
@@ -47,8 +51,8 @@
 
             $id          = $_POST["id"];
             $roomNumber  = $_POST["roomNumber"];
-            $roomTypeId  = $_POST["roomTypeId"];
-            $floor       = $_POST["floor"];
+            $roomTypeId  = (int)$_POST["roomTypeId"];
+            $floor       = (int)$_POST["floor"];
             $status      = $_POST["status"];
 
             $result = $RoomModel->updateRoom(

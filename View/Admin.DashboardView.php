@@ -2,142 +2,128 @@
 <html lang="en">
 <head>
     <title>Admin Dashboard</title>
-
-    <link rel="stylesheet" href="../Asset/AdminDashboard.css">
+    <link rel="stylesheet" href="../Asset/AdminDashboardStyle.css">
 </head>
-<body>
 
-    <div class="dashboard-container">
+<body onload="loadTodaysRevenue(); loadOccupancyRate(); loadAvailableRooms(); loadOccupiedRooms(); loadActiveIssues(); loadPendingReviews();">
 
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <h2>ROY HOTEL</h2>
+<div class="dashboard-container">
 
-            <ul>
-                <li><a href="RoomView.php">Rooms</a></li>
-                <li><a href="RoomTypesView.php">Room Types</a></li>
-                <li><a href="ReceptionistView.php">Receptionist</a></li>
-                <li><a href="SupervisorView.php">Housekeeping Supervisor</a></li>
-                <li><a href="GuestView.php">Guests</a></li>
-                <li><a href="BookingView.php">Booking</a></li>
-                <li><a href="ReportView.php">Financial Reports</a></li>
-                <li>Maintenance</li>
-                <li>Reviews</li>
-                <li><a href="Admin.LoginView.php">Logout</a></li>
-            </ul>
+    <!-- ================= SIDEBAR ================= -->
+    <div class="sidebar">
+        <h2>ROY HOTEL</h2>
+
+        <ul>
+            <li><a href="RoomView.php">Rooms</a></li>
+            <li><a href="RoomTypesView.php">Room Types</a></li>
+            <li><a href="ReceptionistView.php">Receptionist</a></li>
+            <li><a href="SupervisorView.php">Housekeeping</a></li>
+            <li><a href="GuestView.php">Guests</a></li>
+            <li><a href="BookingView.php">Booking</a></li>
+            <li><a href="AdminLogout.php">Logout</a></li>
+        </ul>
+    </div>
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <div class="main-content">
+
+        <!-- TOP BAR -->
+        <div class="topbar">
+            <h1>Admin Dashboard</h1>
+            <p>Welcome Back, Admin</p>
         </div>
 
-        <!-- Main Content -->
-        <div class="main-content">
+        <!-- ================= CARDS ================= -->
+        <div class="card-container">
 
-            <div class="topbar">
-                <h1>Admin Dashboard</h1>
-                <p>Welcome Back, Admin</p>
+            <div class="card">
+                <h3>Today's Revenue</h3>
+                <p>$<span id="todaysRevenue">0</span></p>
             </div>
 
-            <!-- Cards -->
-            <div class="card-container">
-
-                <div class="card">
-                    <h3>Current Occupancy Rate</h3>
-                    <p>82%</p>
-                </div>
-
-                <div class="card">
-                    <h3>Today's Total Revenue</h3>
-                    <p>$12,450</p>
-                </div>
-
-                <div class="card">
-                    <h3>Rooms Available</h3>
-                    <p>45 Rooms</p>
-                </div>
-
-                <div class="card">
-                    <h3>Rooms Occupied</h3>
-                    <p>205 Rooms</p>
-                </div>
-
-                <div class="card">
-                    <h3>Active Maintenance Issues</h3>
-                    <p>7 Issues</p>
-                </div>
-
-                <div class="card">
-                    <h3>Pending Guest Reviews</h3>
-                    <p>18 Reviews</p>
-                </div>
-
+            <div class="card">
+                <h3>Occupancy Rate</h3>
+                <p><span id="occupancyRate">0%</span></p>
             </div>
 
-            <!-- Tables -->
-            <div class="table-section">
+            <div class="card">
+                <h3>Rooms Available</h3>
+                <table>
+                    <thead>
+                        <tr><th>Room Number</th></tr>
+                    </thead>
+                    <tbody id="availableRoomsTable">
+                        <tr><td>Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
 
-                <div class="table-box">
-                    <h2>Maintenance Requests</h2>
+            <div class="card">
+                <h3>Rooms Occupied</h3>
+                <table>
+                    <thead>
+                        <tr><th>Room Number</th></tr>
+                    </thead>
+                    <tbody id="occupiedRoomsTable">
+                        <tr><td>Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
 
-                    <table>
+        </div>
+
+        <!-- ================= TABLES (STACKED) ================= -->
+        <div class="table-section">
+
+            <!-- ACTIVE ISSUES -->
+            <div class="table-box">
+                <h2>Active Maintenance Issues</h2>
+
+                <table>
+                    <thead>
                         <tr>
                             <th>Room</th>
                             <th>Issue</th>
                             <th>Status</th>
+                            <th>Reported At</th>
                         </tr>
+                    </thead>
 
+                    <tbody id="issuesTableBody">
+                        <tr><td colspan="4">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- PENDING REVIEWS -->
+            <div class="table-box">
+                <h2>Pending Guest Reviews</h2>
+
+                <table>
+                    <thead>
                         <tr>
-                            <td>203</td>
-                            <td>AC Not Working</td>
-                            <td>Pending</td>
-                        </tr>
-
-                        <tr>
-                            <td>117</td>
-                            <td>Broken Shower</td>
-                            <td>In Progress</td>
-                        </tr>
-
-                        <tr>
-                            <td>309</td>
-                            <td>Light Replacement</td>
-                            <td>Pending</td>
-                        </tr>
-                    </table>
-                </div>
-
-                <div class="table-box">
-                    <h2>Pending Guest Reviews</h2>
-
-                    <table>
-                        <tr>
-                            <th>Guest</th>
-                            <th>Room</th>
+                            <th>Booking ID</th>
+                            <th>Guest ID</th>
                             <th>Rating</th>
+                            <th>Cleanliness</th>
+                            <th>Service</th>
+                            <th>Review</th>
+                            <th>Date</th>
                         </tr>
+                    </thead>
 
-                        <tr>
-                            <td>John Doe</td>
-                            <td>204</td>
-                            <td>4.5</td>
-                        </tr>
-
-                        <tr>
-                            <td>Sarah Smith</td>
-                            <td>111</td>
-                            <td>5.0</td>
-                        </tr>
-
-                        <tr>
-                            <td>Michael Lee</td>
-                            <td>315</td>
-                            <td>4.0</td>
-                        </tr>
-                    </table>
-                </div>
-
+                    <tbody id="pendingReviewsTable">
+                        <tr><td colspan="7">Loading reviews...</td></tr>
+                    </tbody>
+                </table>
             </div>
 
         </div>
 
     </div>
+</div>
+
+<script src="../Asset/AdminAjax.js" defer></script>
 
 </body>
 </html>

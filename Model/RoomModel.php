@@ -17,49 +17,31 @@ class RoomModel{
     public function getAllRooms(){
 
         $sql = "
-            SELECT 
-                rooms.id,
-                rooms.room_number,
-                rooms.floor,
-                rooms.status,
-                rooms.room_type_id,
-                room_types.name AS room_type
-            FROM rooms
-            INNER JOIN room_types 
-            ON rooms.room_type_id = room_types.id
-        ";
+        SELECT 
+            id,
+            room_number,
+            room_type_id,
+            floor,
+            status
+        FROM rooms
+    ";
 
-        $result = $this->conn->query($sql);
+    $result = $this->conn->query($sql);
 
-        $rooms = [];
+    $rooms = [];
 
-        if($result && $result->num_rows > 0){
+    while($row = $result->fetch_assoc()){
+        $rooms[] = $row;
+    }
 
-            while($row = $result->fetch_assoc()){
-                $rooms[] = $row;
-            }
-        }
-
-        return $rooms;
+    return $rooms;
     }
 
 
     // GET ROOM BY ID
     public function getRoomById($id){
 
-        $sql = "
-            SELECT 
-                rooms.id,
-                rooms.room_number,
-                rooms.floor,
-                rooms.status,
-                rooms.room_type_id,
-                room_types.name AS room_type
-            FROM rooms
-            INNER JOIN room_types 
-            ON rooms.room_type_id = room_types.id
-            WHERE rooms.id = '$id'
-        ";
+        $sql = "SELECT * from rooms WHERE id=$id;";
 
         $result = $this->conn->query($sql);
 
@@ -77,21 +59,28 @@ class RoomModel{
     $sql = "
         INSERT INTO rooms 
         (room_number, room_type_id, floor, status)
-        VALUES 
-        (?, ?, ?, ?)
+        VALUES (?, ?, ?, ?)
     ";
 
     $stmt = $this->conn->prepare($sql);
 
+    if(!$stmt){
+        die("Prepare Error: " . $this->conn->error);
+    }
+
     $stmt->bind_param(
-        "siss",
+        "siis",
         $roomNumber,
         $roomTypeId,
         $floor,
         $status
     );
 
-    return $stmt->execute();
+    if(!$stmt->execute()){
+        die("Execute Error: " . $stmt->error);
+    }
+
+    return true;
 }
 
 
@@ -108,17 +97,27 @@ class RoomModel{
     ";
 
     $stmt = $this->conn->prepare($sql);
+    if(!$stmt){
+        error_log("Prepare failed: " . $this->conn->error);
+        return false;
+    }
 
     $stmt->bind_param(
-        "sissi",
+        "siisi",
         $roomNumber,
         $roomTypeId,
         $floor,
         $status,
         $id
     );
+    
 
-    return $stmt->execute();
+    $exec = $stmt->execute();
+
+    if(!$exec){
+        error_log("Execute failed: " . $stmt->error);
+    }
+    return $exec;
 }
 
 

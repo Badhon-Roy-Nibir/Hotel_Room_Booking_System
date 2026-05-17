@@ -51,7 +51,6 @@ class RoomTypeModel{
 
                         
             $row = $result->fetch_assoc();
-
             $row["thumbnail"] = base64_encode($row["thumbnail"]);
 
             return $row;
