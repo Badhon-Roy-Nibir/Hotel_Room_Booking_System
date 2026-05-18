@@ -25,14 +25,10 @@ class GuestModel {
         ";
 
         $result = $this->conn->query($sql);
-
         $data = [];
-
         if ($result && $result->num_rows > 0) {
 
             while ($row = $result->fetch_assoc()) {
-
-                // Convert image to base64 for frontend
                 if (!empty($row["profile_pic"])) {
                     $row["profile_pic"] = base64_encode($row["profile_pic"]);
                 }

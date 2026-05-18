@@ -31,7 +31,6 @@ function Login(event) {
             }
         }
     };
-
     xhr.send(
         "action=Login" +
         "&email="    + encodeURIComponent(email) +
@@ -109,8 +108,6 @@ function loadOccupancyRate() {
 
     xhr.send();
 }
-
-
 // =========================
 // LOAD AVAILABLE ROOMS
 // =========================

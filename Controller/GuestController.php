@@ -20,8 +20,6 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
     $action = $_GET["action"] ?? "";
 
-
-
     // =========================
     // GET ALL GUESTS
     // =========================
@@ -36,9 +34,6 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
         exit;
     }
-
-
-
     // =========================
     // GET GUEST BY ID
     // =========================
@@ -55,9 +50,6 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
         exit;
     }
-
-
-
     // =========================
     // DEACTIVATE GUEST (POLICY VIOLATION)
     // =========================
