@@ -52,7 +52,7 @@
 
     </div><br>
     <label>Thumbnail Image</label>
-    <input type="file" id="thumbnail" name="thumbnail" accept="image/*"><br>
+    <input type="file" id="thumbnail" name="thumbnail" accept="image/*" required><br>
 
     <input type="submit" value="Save" name="Save">
     <input type="reset" value="Clear">
