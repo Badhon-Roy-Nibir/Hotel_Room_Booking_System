@@ -98,7 +98,7 @@
                 <input 
                     type="file"
                     id="profilePic"
-                    accept="image/*"
+                    accept="image/*"required
                 >
 
 
