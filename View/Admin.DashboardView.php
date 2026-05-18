@@ -1,3 +1,11 @@
+<?php
+    session_start();
+
+    if(!isset($_SESSION["email"])){
+        header("Location: Admin.LoginView.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
